@@ -3,30 +3,24 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  padding: 10px;
+  height: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#topo{
+	background-color:#B2AA86;
+	background-size:900px;
+	margin:auto;
+	width:auto;
+	height:80px;
 }
 
-.App-link {
-  color: #61dafb;
+#conteudo{
+  margin-top: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3{
+  font-family:'Lucida Sans', sans-serif;
 }
