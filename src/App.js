@@ -121,7 +121,7 @@ return(
 
         <header>
           <button onClick={() => abrirFecharModalIncluir()} className="btn">
-            <img src={addIcon} alt="Adicionar" style={{ width: '20px', marginRight: '5px' }} />
+            <img src={addIcon} alt="Adicionar" style={{ width: '20px', marginRight: '5px' }} />Incluir Novo
           </button>
         </header>
       </center>
