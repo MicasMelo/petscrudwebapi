@@ -1,9 +1,12 @@
 import logo from './logo.jpg';
+import editIcon from './icones/editar.png';
+import deleteIcon from './icones/excluir.png';
+import addIcon from './icones/incluir.png';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect} from "react";
 import axios from 'axios';
-import { Modal, ModalBody, ModalFooter, ModelHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 
 function App() {
@@ -119,13 +122,10 @@ return(
         <h3><u>Cadastro de Animais</u></h3>
 
       <header>
-          <button
-            onClick={() => abrirFecharModalIncluir()}
-            className="btn btn-success"
-          >
-            Incluir Novo Aluno
-          </button>
-        </header>
+        <button onClick={() => abrirFecharModalIncluir()} className="btn">
+          <img src={addIcon} alt="Adicionar" style={{ width: '20px', marginRight: '5px' }} />
+        </button>
+      </header>
       </center>
       <br />
 
@@ -146,11 +146,122 @@ return(
               <td>{animal.nome}</td>
               <td>{animal.especie}</td>
               <td>{animal.idade}</td>
-              <td></td>
+              <td>
+                <button className="btn" onClick={() => selecionarAnimal(animal, "Editar")}>
+                  <img src={editIcon} alt="Editar" style={{ width: '20px', marginRight: '5px' }} />
+                </button>
+                <button className="btn" onClick={() => selecionarAnimal(animal, "Excluir")}>
+                  <img src={deleteIcon} alt="Excluir" style={{ width: '20px', marginRight: '5px' }} />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <Modal isOpen={modalIncluir}>
+        <ModalHeader>Incluir Animal</ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label>Nome: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="nome"
+              onChange={handleChange}
+            />
+            <br />
+            <label>Espécie: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="especie"
+              onChange={handleChange}
+            />
+            <br />
+            <label>Idade: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="idade"
+              onChange={handleChange}
+            />
+            <br />
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn" onClick={() => pedidoPost()}>
+            Incluir
+          </button>
+          <button
+            className="btn"
+            onClick={() => abrirFecharModalIncluir()}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modalEditar}>
+        <ModalHeader>Editar Animal</ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label>ID: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              readOnly
+              value={animalSelecionado && animalSelecionado.id}
+            />
+            <br />
+            <label>Nome: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="nome"
+              onChange={handleChange}
+              value={animalSelecionado && animalSelecionado.nome}
+            />
+            <br />
+            <label>Espécie: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="especie"
+              onChange={handleChange}
+              value={animalSelecionado && animalSelecionado.especie}
+            />
+            <br />
+            <label>Idade: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="idade"
+              onChange={handleChange}
+              value={animalSelecionado && animalSelecionado.idade}
+            />
+            <br />
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn" onClick={() => animalPut()}>
+            Editar
+          </button>
+          <button
+            className="btn"
+            onClick={() => abrirFecharModalEditar()}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
     </div>
   </body>
 )
