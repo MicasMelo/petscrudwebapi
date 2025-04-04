@@ -111,21 +111,19 @@ function App() {
   });
 
 return(
-  <body>
-    <div id="topo">
-      <center><img src={logo} className="App-logo" alt="logo" /></center>
-    </div>
-
-    <div id="conteudo" className="animal-container">
-    <br />
+  <div className='animal-container'>
+  <div id="topo">
+    <center><img src={logo} className="App-logo" alt="logo" /></center>
+  </div><div id="conteudo" className="animal-container">
+      <br />
       <center>
         <h3><u>Cadastro de Animais</u></h3>
 
-      <header>
-        <button onClick={() => abrirFecharModalIncluir()} className="btn">
-          <img src={addIcon} alt="Adicionar" style={{ width: '20px', marginRight: '5px' }} />
-        </button>
-      </header>
+        <header>
+          <button onClick={() => abrirFecharModalIncluir()} className="btn">
+            <img src={addIcon} alt="Adicionar" style={{ width: '20px', marginRight: '5px' }} />
+          </button>
+        </header>
       </center>
       <br />
 
@@ -169,8 +167,7 @@ return(
               type="text"
               className="form-control"
               name="nome"
-              onChange={handleChange}
-            />
+              onChange={handleChange} />
             <br />
             <label>Espécie: </label>
             <br />
@@ -178,8 +175,7 @@ return(
               type="text"
               className="form-control"
               name="especie"
-              onChange={handleChange}
-            />
+              onChange={handleChange} />
             <br />
             <label>Idade: </label>
             <br />
@@ -187,8 +183,7 @@ return(
               type="text"
               className="form-control"
               name="idade"
-              onChange={handleChange}
-            />
+              onChange={handleChange} />
             <br />
           </div>
         </ModalBody>
@@ -215,8 +210,7 @@ return(
               type="text"
               className="form-control"
               readOnly
-              value={animalSelecionado && animalSelecionado.id}
-            />
+              value={animalSelecionado && animalSelecionado.id} />
             <br />
             <label>Nome: </label>
             <br />
@@ -225,8 +219,7 @@ return(
               className="form-control"
               name="nome"
               onChange={handleChange}
-              value={animalSelecionado && animalSelecionado.nome}
-            />
+              value={animalSelecionado && animalSelecionado.nome} />
             <br />
             <label>Espécie: </label>
             <br />
@@ -235,8 +228,7 @@ return(
               className="form-control"
               name="especie"
               onChange={handleChange}
-              value={animalSelecionado && animalSelecionado.especie}
-            />
+              value={animalSelecionado && animalSelecionado.especie} />
             <br />
             <label>Idade: </label>
             <br />
@@ -245,8 +237,7 @@ return(
               className="form-control"
               name="idade"
               onChange={handleChange}
-              value={animalSelecionado && animalSelecionado.idade}
-            />
+              value={animalSelecionado && animalSelecionado.idade} />
             <br />
           </div>
         </ModalBody>
@@ -262,8 +253,24 @@ return(
           </button>
         </ModalFooter>
       </Modal>
+      <Modal isOpen={modalExcluir}>
+        <ModalHeader>Excluir Animal</ModalHeader>
+        <ModalBody>
+          Confirma a exclusão do animal <strong>{animalSelecionado && animalSelecionado.nome}</strong>?
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn" onClick={() => animalDelete()}>
+            Sim
+          </button>
+          <button
+            className="btn"
+            onClick={() => abrirFecharModalExcluir()}>
+            Não
+          </button>
+        </ModalFooter>
+      </Modal>
     </div>
-  </body>
+  </div>
 )
 }
 
