@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Login from "./Login";
-import CadastroAnimais from "./Cadastro"; // seu código original pode ir aqui
+import CadastroAnimais from "./Cadastro";
 
 function App() {
   const [autenticado, setAutenticado] = useState(!!localStorage.getItem("token"));

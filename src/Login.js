@@ -18,7 +18,7 @@ function Login({ onLogin }) {
 
       const token = response.data.token;
       localStorage.setItem("token", token);
-      onLogin(); // chama a função que renderiza a App principal
+      onLogin();
     } catch (err) {
       setErro("Usuário ou senha inválidos");
       console.error(err);
