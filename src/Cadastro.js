@@ -44,7 +44,7 @@ function App() {
     setModalExcluir(!modalExcluir);
   };
 
-  const pedidoPost = async () => {
+  const animalPost = async () => {
   const token = localStorage.getItem("token");
   delete animalSelecionado.id;
   animalSelecionado.idade = parseInt(animalSelecionado.idade);
@@ -210,7 +210,7 @@ return(
           </div>
         </ModalBody>
         <ModalFooter>
-          <button className="btn" onClick={() => pedidoPost()}>
+          <button className="btn" onClick={() => animalPost()}>
             Incluir
           </button>
           <button
